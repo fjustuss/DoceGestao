@@ -1,7 +1,11 @@
 import React from 'react';
 import { Menu, X, Cake } from 'lucide-react';
 
-export default function Header() {
+interface HeaderProps {
+  onLoginClick?: () => void;
+}
+
+export default function Header({ onLoginClick }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
@@ -27,7 +31,10 @@ export default function Header() {
             <a href="#contato" className="text-gray-600 hover:text-pink-600 transition-colors">
               Contato
             </a>
-            <button className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-2 rounded-full hover:from-pink-600 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+            <button 
+              onClick={onLoginClick}
+              className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-2 rounded-full hover:from-pink-600 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
               Acessar Minha Conta
             </button>
           </nav>
@@ -54,7 +61,10 @@ export default function Header() {
               <a href="#contato" className="block px-3 py-2 text-gray-600 hover:text-pink-600">
                 Contato
               </a>
-              <button className="w-full mt-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-2 rounded-full hover:from-pink-600 hover:to-rose-600 transition-all duration-300">
+              <button 
+                onClick={onLoginClick}
+                className="w-full mt-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-2 rounded-full hover:from-pink-600 hover:to-rose-600 transition-all duration-300"
+              >
                 Acessar Minha Conta
               </button>
             </div>
