@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff, Loader2, Mail, Lock, Cake } from 'lucide-react';
+import { Eye, EyeOff, Loader2, Mail, Lock, Cake, ArrowLeft } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
 interface LoginFormProps {
   onSuccess: () => void;
   onForgotPassword: () => void;
   onCreateAccount: () => void;
+  onBackToHome: () => void;
 }
 
-export default function LoginForm({ onSuccess, onForgotPassword, onCreateAccount }: LoginFormProps) {
+export default function LoginForm({ onSuccess, onForgotPassword, onCreateAccount, onBackToHome }: LoginFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -64,6 +65,16 @@ export default function LoginForm({ onSuccess, onForgotPassword, onCreateAccount
 
         {/* Login Card */}
         <div className="bg-white rounded-2xl shadow-xl border border-pink-100 p-8">
+          {/* Back to Home Button */}
+          <button
+            onClick={onBackToHome}
+            className="flex items-center space-x-2 text-pink-600 hover:text-pink-700 mb-6 transition-colors"
+            disabled={isLoading}
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span className="text-sm">Voltar à página inicial</span>
+          </button>
+
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
               Bem-vindo ao DoceGestão

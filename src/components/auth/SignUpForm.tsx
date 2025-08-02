@@ -5,9 +5,10 @@ import { supabase } from '../../lib/supabase';
 interface SignUpFormProps {
   onSuccess: () => void;
   onBackToLogin: () => void;
+  onBackToHome: () => void;
 }
 
-export default function SignUpForm({ onSuccess, onBackToLogin }: SignUpFormProps) {
+export default function SignUpForm({ onSuccess, onBackToLogin, onBackToHome }: SignUpFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -82,14 +83,23 @@ export default function SignUpForm({ onSuccess, onBackToLogin }: SignUpFormProps
 
         {/* Sign Up Card */}
         <div className="bg-white rounded-2xl shadow-xl border border-pink-100 p-8">
-          {/* Back Button */}
+          {/* Back to Home Button */}
           <button
-            onClick={onBackToLogin}
-            className="flex items-center space-x-2 text-pink-600 hover:text-pink-700 mb-6 transition-colors"
+            onClick={onBackToHome}
+            className="flex items-center space-x-2 text-pink-600 hover:text-pink-700 mb-4 transition-colors"
             disabled={isLoading}
           >
             <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm">Voltar ao login</span>
+            <span className="text-sm">Voltar à página inicial</span>
+          </button>
+
+          {/* Back Button */}
+          <button
+            onClick={onBackToLogin}
+            className="flex items-center space-x-2 text-gray-600 hover:text-gray-700 mb-6 transition-colors"
+            disabled={isLoading}
+          >
+            <span className="text-sm">← Voltar ao login</span>
           </button>
 
           <div className="text-center mb-8">

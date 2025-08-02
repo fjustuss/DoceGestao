@@ -66,6 +66,7 @@ function App() {
           onSuccess={() => setAppState('dashboard')}
           onForgotPassword={() => setShowForgotPassword(true)}
           onCreateAccount={() => setAppState('signup')}
+          onBackToHome={() => setAppState('landing')}
         />
         <ForgotPasswordModal
           isOpen={showForgotPassword}
@@ -80,6 +81,7 @@ function App() {
       <SignUpForm
         onSuccess={() => setAppState('dashboard')}
         onBackToLogin={() => setAppState('login')}
+        onBackToHome={() => setAppState('landing')}
       />
     );
   }
